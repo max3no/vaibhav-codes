@@ -16,3 +16,14 @@
 .animate-blink {
   animation: blink 1s step-end infinite;
 }
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+html.dark {
+  background-color: #0f172a; /* dark background */
+}
+
+html.light {
+  background-color: azure;
+}

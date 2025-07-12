@@ -1,10 +1,13 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { FaGithub, FaLinkedin, FaJava, FaReact, FaDocker } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaJava, FaReact, FaDocker, FaSun, FaMoon } from 'react-icons/fa';
 import { SiSpring, SiPostgresql, SiMongodb, SiKubernetes, SiGooglecloud, SiTailwindcss, SiApachekafka } from 'react-icons/si';
 import { TbSql } from "react-icons/tb";
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollProgress from './components/scrollProgress';
+import { useTypewriter } from 'react-simple-typewriter';
+import { useLayoutEffect } from 'react';
+
 
 const sectionFade = {
   hidden: { opacity: 0, y: 20 },
@@ -26,11 +29,38 @@ const cardVariants = {
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [lightMode, setLightMode] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500); // 2.5s loader
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  const [text] = useTypewriter({
+    words: [
+      'Senior Software Engineer',
+      'Java · Spring Boot · Kafka',
+      'Cloud Infrastructure Enthusiast',
+      'Scalable Systems Builder',
+      'Microservices · APIs · DBs',
+      'Loves Clean Architecture',
+      'Fan of Event-Driven Design',
+      'Async · Resilient · Reliable',
+      'Writes Code. Designs Systems.',
+    ],
+    loop: true,
+    typeSpeed: 80,
+    deleteSpeed: 60,
+    delaySpeed: 1200,
+  });
+
+  useLayoutEffect(() => {
+    if (!lightMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [lightMode]);
 
   return (
     <>
@@ -49,7 +79,7 @@ export default function Home() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-gray-950"
           >
             <motion.div
-                className="text-4xl text-cyan-400 tracking-widest flex space-x-1 font-poppins"
+              className="text-4xl text-cyan-400 tracking-widest flex space-x-1 font-poppins"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {"VAIBHAV".split("").map((char, idx) => (
@@ -64,15 +94,24 @@ export default function Home() {
               ))}
             </motion.div>
           </motion.div>
-
         ) : (
           <motion.main
             key="main"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="min-h-screen bg-gray-950 text-white px-6 py-20 font-sans overflow-hidden"
+            className="min-h-screen bg-gray-950 dark:bg-white dark:text-gray-900 text-white px-6 py-20 font-sans overflow-hidden"
           >
+            {/* Toggle theme */}
+            <div className="absolute top-4 right-4 z-50">
+              <button
+                onClick={() => setLightMode(!lightMode)}
+                className="p-2 rounded-full border border-gray-600 hover:border-cyan-400 transition"
+              >
+                {lightMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-800" />}
+              </button>
+            </div>
+
             {/* Background blobs */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
               <div className="absolute w-72 h-72 bg-cyan-500 opacity-20 rounded-full filter blur-3xl animate-pulse top-10 left-1/4"></div>
@@ -83,10 +122,13 @@ export default function Home() {
             <motion.section initial="hidden" animate="visible" variants={sectionFade} className="text-center">
               <p className="text-xl text-cyan-400 mb-2 tracking-wide">Hi, I&apos;m</p>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold drop-shadow-lg">Vaibhav Singh</h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl text-gray-400 mt-3 font-medium">
-                Senior Software Engineer · Backend & Cloud
+
+              <h2 className="text-lg sm:text-xl md:text-2xl mt-3 font-medium text-cyan-300 min-h-[2.5rem]">
+                {text}
+                <span className="text-cyan-400 font-bold">|</span>
               </h2>
-              <p className="max-w-2xl mx-auto mt-6 text-gray-300 text-md leading-relaxed">
+
+              <p className="max-w-2xl mx-auto mt-6 text-gray-300 dark:text-gray-600 text-md leading-relaxed">
                 I build scalable, high-performance backend systems with Java, Spring Boot, Kafka, and GCP — passionate about clean architecture and cloud-native design.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -127,7 +169,7 @@ export default function Home() {
               custom={1.5}
             >
               <h2 className="text-3xl font-bold mb-6 text-cyan-400">Skills</h2>
-              <div className="flex flex-wrap justify-center gap-8 text-cyan-300">
+              <div className="flex flex-wrap justify-center gap-8 text-cyan-300 dark:text-cyan-700">
                 {[['Java', <FaJava key="java" />], ['Spring Boot', <SiSpring key="spring" />], ['React', <FaReact key="react" />],
                 ['Kafka', <SiApachekafka key="kafka" />], ['PostgreSQL', <SiPostgresql key="pg" />], ['MongoDB', <SiMongodb key="mongo" />],
                 ['Docker', <FaDocker key="docker" />], ['Kubernetes', <SiKubernetes key="k8s" />], ['GCP', <SiGooglecloud key="gcp" />],
@@ -151,7 +193,7 @@ export default function Home() {
               custom={2}
             >
               <h2 className="text-3xl font-bold mb-4 text-cyan-400">About Me</h2>
-              <p className="text-gray-300">
+              <p className="text-gray-300 dark:text-gray-700">
                 With 8+ years of experience, I specialize in backend systems, distributed architectures, cloud-native platforms, and building highly maintainable codebases. I&apos;ve worked extensively in the fintech domain, leading teams and delivering critical systems at scale.
               </p>
             </motion.section>
@@ -187,10 +229,10 @@ export default function Home() {
                       boxShadow: '0px 10px 20px rgba(0, 255, 255, 0.1)',
                       transition: { duration: 0.1, ease: 'easeOut' },
                     }}
-                    className="border border-gray-700 rounded-lg p-6 bg-gray-900 hover:border-cyan-500 transition"
+                    className="border border-gray-700 rounded-lg p-6 bg-gray-900 dark:bg-gray-100 hover:border-cyan-500 transition"
                   >
-                    <h3 className="text-xl font-semibold text-white mb-2">{proj.title}</h3>
-                    <p className="text-gray-400 text-sm">{proj.desc}</p>
+                    <h3 className="text-xl font-semibold text-white dark:text-black mb-2">{proj.title}</h3>
+                    <p className="text-gray-400 dark:text-gray-600 text-sm">{proj.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -206,7 +248,7 @@ export default function Home() {
               custom={4}
             >
               <h2 className="text-3xl font-bold text-cyan-400 mb-4">Get In Touch</h2>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-300 dark:text-gray-600 mb-6">
                 I&apos;m always open to interesting opportunities or collaborations. Feel free to connect with me on LinkedIn or drop an email.
               </p>
               <a
