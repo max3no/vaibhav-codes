@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaJava, FaReact, FaDocker } from 'react-icons/fa'
 import { SiSpring, SiPostgresql, SiMongodb, SiKubernetes, SiGooglecloud, SiTailwindcss, SiApachekafka } from 'react-icons/si';
 import { TbSql } from "react-icons/tb";
 import { motion, AnimatePresence } from 'framer-motion';
+import ScrollProgress from './components/scrollProgress';
 
 const sectionFade = {
   hidden: { opacity: 0, y: 20 },
@@ -39,6 +40,7 @@ export default function Home() {
       </Head>
 
       <AnimatePresence>
+        <ScrollProgress />
         {loading ? (
           <motion.div
             key="loader"
