@@ -136,7 +136,7 @@ export default function Home() {
               <SiTailwindcss className="text-4xl mb-1" /> Tailwind CSS
             </div>
             <div className="flex flex-col items-center text-sm">
-              <TbSql className="text-4xl mb-1"/> SQL
+              <TbSql className="text-4xl mb-1" /> SQL
             </div>
           </div>
         </motion.section>
@@ -152,8 +152,7 @@ export default function Home() {
         >
           <h2 className="text-3xl font-bold mb-4 text-cyan-400">About Me</h2>
           <p className="text-gray-300">
-            With 8+ years of experience, I specialize in backend systems, distributed architectures, cloud-native platforms, and building highly maintainable codebases. I've worked across fintech and SaaS domains, leading teams and delivering critical systems at scale.
-          </p>
+            With 8+ years of experience, I specialize in backend systems, distributed architectures, cloud-native platforms, and building highly maintainable codebases. I&apos;ve worked extensively in the fintech domain, leading teams and delivering critical systems at scale.          </p>
         </motion.section>
 
         {/* Projects Section */}
