@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add to globals.css or a tailwind class */
 @keyframes bgGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }

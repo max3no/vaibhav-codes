@@ -39,10 +39,6 @@ export default function Home() {
       <Head>
         <title>Vaibhav Singh – Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <main className="min-h-screen bg-gray-950 text-white px-6 py-20 font-sans overflow-hidden">
@@ -60,7 +56,7 @@ export default function Home() {
           variants={sectionFade}
           className="text-center"
         >
-          <p className="text-xl text-cyan-400 mb-2 tracking-wide">Hi, I'm</p>
+          <p className="text-xl text-cyan-400 mb-2 tracking-wide">Hi, I&apos;m</p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold drop-shadow-lg">
             Vaibhav Singh
           </h1>
@@ -205,7 +201,7 @@ export default function Home() {
         >
           <h2 className="text-3xl font-bold text-cyan-400 mb-4">Get In Touch</h2>
           <p className="text-gray-300 mb-6">
-            I’m always open to interesting opportunities or collaborations. Feel free to connect with me on LinkedIn or drop an email.
+            I&apos;m always open to interesting opportunities or collaborations. Feel free to connect with me on LinkedIn or drop an email.
           </p>
           <a
             href="mailto:vaibhavsingh.contact@gmail.com"
